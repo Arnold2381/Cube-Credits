@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "736272055256",
+    "firebase_url": "https://cube-credits-default-rtdb.firebaseio.com",
+    "project_id": "cube-credits",
+    "storage_bucket": "cube-credits.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736272055256:android:3a2bb9847b998bf1e0d0ad",
+        "android_client_info": {
+          "package_name": "com.example.cubestop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736272055256-hmg6oot4lr2tjerlambpuct80q7qtqot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbIOwshKTirur2xcSKvr72q_DESxICx2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736272055256-hmg6oot4lr2tjerlambpuct80q7qtqot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
