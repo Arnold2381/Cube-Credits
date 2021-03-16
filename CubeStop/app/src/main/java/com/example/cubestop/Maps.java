@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,6 +32,8 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
     SharedPreferences name;
     SharedPreferences.Editor edit;
     private TextView title,addr,time,status,dis;
+    private Button details;
+    private int near = 0;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -60,6 +64,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         time = findViewById(R.id.timing);
         dis = findViewById(R.id.dist);
         status = findViewById(R.id.open);
+        details = findViewById(R.id.details);
 
     }
 
@@ -87,7 +92,6 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                     i++;
                 }
                 double d = dist(user.child("Latitude").getValue(Double.class),user.child("Longitude").getValue(Double.class),arr[0].getLatitude(),arr[0].getLongitude());
-                int near = 0;
                 for(int j=1;j<stops.getChildrenCount();j++) {
                     if (dist(user.child("Latitude").getValue(Double.class),user.child("Longitude").getValue(Double.class), arr[j].getLatitude(), arr[j].getLongitude()) < d) {
                         d = dist(user.child("Latitude").getValue(Double.class),user.child("Longitude").getValue(Double.class), arr[j].getLatitude(), arr[j].getLongitude());
@@ -116,6 +120,14 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                 else{
                     status.setTextColor(Color.RED);
                 }
+                details.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Maps.this,CubeStopDetails.class);
+                        i.putExtra("cube",arr[near].getName());
+                        startActivity(i);
+                    }
+                });
             }
             @Override
             public void onCancelled(DatabaseError error) {

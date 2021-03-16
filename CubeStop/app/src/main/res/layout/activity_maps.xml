@@ -120,4 +120,14 @@
         app:layout_constraintTop_toBottomOf="@+id/symbol"
         android:src="@drawable/clock" />
 
+    <Button
+        android:id="@+id/details"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/addr"
+        app:layout_constraintEnd_toEndOf="@+id/addr"
+        app:layout_constraintStart_toStartOf="@+id/symbol"
+        app:layout_constraintTop_toTopOf="@+id/name" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
