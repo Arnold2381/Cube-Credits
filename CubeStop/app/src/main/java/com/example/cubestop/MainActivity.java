@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
 
-        name = getSharedPreferences("username",MODE_PRIVATE);
+        name = getSharedPreferences("DETAILS",MODE_PRIVATE);
 
-        if(!name.getString("username","").equals("")){
-            Toast.makeText(getApplicationContext(),"Welcome "+name+"!",Toast.LENGTH_SHORT).show();
+        if(!name.getString("name","").equals("")){
+            Toast.makeText(getApplicationContext(),"Welcome "+name.getString("name","")+"!",Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainActivity.this,Maps.class);
             startActivity(i);
         }
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             if(dataSnapshot.hasChild(usr) && dataSnapshot.child(usr).child("Password").getValue().toString().equals(pass)){
                                 Toast.makeText(getApplicationContext(),"Logged in successfully!",Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(MainActivity.this,Maps.class);
+                                i.putExtra("name",dataSnapshot.child(usr).child("Name").getValue().toString());
                                 i.putExtra("user",usr);
                                 startActivity(i);
                             }
