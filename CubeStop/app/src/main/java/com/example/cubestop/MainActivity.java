@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         if(!name.getString("name","").equals("")){
             Toast.makeText(getApplicationContext(),"Welcome "+name.getString("name","")+"!",Toast.LENGTH_SHORT).show();
             Intent i = new Intent(MainActivity.this,Maps.class);
+            this.finish();
             startActivity(i);
         }
 
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent i = new Intent(MainActivity.this,Maps.class);
                                 i.putExtra("name",dataSnapshot.child(usr).child("Name").getValue().toString());
                                 i.putExtra("user",usr);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(i);
                             }
                             else{

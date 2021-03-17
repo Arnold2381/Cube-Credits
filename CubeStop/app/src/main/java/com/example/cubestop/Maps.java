@@ -60,7 +60,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         }
 
         title = findViewById(R.id.name);
-        addr = findViewById(R.id.addr);
+        addr = findViewById(R.id.desc);
         time = findViewById(R.id.timing);
         dis = findViewById(R.id.dist);
         status = findViewById(R.id.open);
@@ -111,7 +111,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(marker));
                 title.setText(arr[near].getName());
                 addr.setText(stops.child(arr[near].getName()).child("Address").getValue(String.class));
-                dis.setText("Distance: "+d+" kms");
+                dis.setText(d+" kms");
                 time.setText(stops.child(arr[near].getName()).child("Timing").getValue(String.class));
                 status.setText(stops.child(arr[near].getName()).child("Status").getValue(String.class));
                 if(status.getText().equals("OPEN")){

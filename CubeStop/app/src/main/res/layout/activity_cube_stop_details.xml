@@ -81,11 +81,10 @@
         app:layout_constraintTop_toTopOf="@+id/food" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/avail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Available: 15"
         android:textAlignment="center"
         android:textColor="#36881D"
         android:textSize="16sp"
@@ -93,4 +92,44 @@
         app:layout_constraintBottom_toBottomOf="@+id/parking"
         app:layout_constraintEnd_toEndOf="@+id/parking"
         app:layout_constraintStart_toStartOf="@+id/parking" />
+
+    <Button
+        android:id="@+id/food_b"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/food"
+        app:layout_constraintEnd_toEndOf="@+id/food"
+        app:layout_constraintStart_toStartOf="@+id/food"
+        app:layout_constraintTop_toTopOf="@+id/food" />
+
+    <Button
+        android:id="@+id/wash_b"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/washroom"
+        app:layout_constraintEnd_toEndOf="@+id/washroom"
+        app:layout_constraintStart_toStartOf="@+id/washroom"
+        app:layout_constraintTop_toTopOf="@+id/washroom" />
+
+    <Button
+        android:id="@+id/fuel_b"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/fuel"
+        app:layout_constraintEnd_toEndOf="@+id/fuel"
+        app:layout_constraintStart_toStartOf="@+id/fuel"
+        app:layout_constraintTop_toTopOf="@+id/fuel" />
+
+    <Button
+        android:id="@+id/shops_b"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/shops"
+        app:layout_constraintEnd_toEndOf="@+id/shops"
+        app:layout_constraintStart_toStartOf="@+id/shops"
+        app:layout_constraintTop_toTopOf="@+id/shops" />
 </androidx.constraintlayout.widget.ConstraintLayout>
