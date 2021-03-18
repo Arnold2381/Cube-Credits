@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent i = new Intent(MainActivity.this,Maps.class);
                                 i.putExtra("name",dataSnapshot.child(usr).child("Name").getValue().toString());
                                 i.putExtra("user",usr);
-                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                finish();
                                 startActivity(i);
                             }
                             else{
