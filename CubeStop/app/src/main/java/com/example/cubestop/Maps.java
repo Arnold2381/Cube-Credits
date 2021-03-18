@@ -60,7 +60,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         }
 
         title = findViewById(R.id.name);
-        addr = findViewById(R.id.desc);
+        addr = findViewById(R.id.price);
         time = findViewById(R.id.timing);
         dis = findViewById(R.id.dist);
         status = findViewById(R.id.open);

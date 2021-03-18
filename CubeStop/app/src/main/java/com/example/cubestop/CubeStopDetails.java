@@ -71,7 +71,7 @@ public class CubeStopDetails extends AppCompatActivity {
         wash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(CubeStopDetails.this,Description.class);
+                Intent in = new Intent(CubeStopDetails.this,Details.class);
                 in.putExtra("type","Wash");
                 in.putExtra("cube",cube);
                 startActivity(in);
@@ -91,7 +91,7 @@ public class CubeStopDetails extends AppCompatActivity {
         fuel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(CubeStopDetails.this,Description.class);
+                Intent in = new Intent(CubeStopDetails.this,Details.class);
                 in.putExtra("type","Fuel");
                 in.putExtra("cube",cube);
                 startActivity(in);

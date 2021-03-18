@@ -69,7 +69,7 @@ public class Description extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 card = new ArrayList<>();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    card.add(new CubeCard(ds.getKey(),ds.child("Description").getValue(String.class),ds.child("Url").getValue(String.class)));
+                    card.add(new CubeCard(ds.getKey(),ds.child("Description").getValue(String.class),ds.child("Url").getValue(String.class),cube,type));
                 }
                 nameAdapter = new NameAdapter(getApplicationContext(), card);
                 view.setAdapter(nameAdapter);
@@ -111,7 +111,17 @@ class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameHolder> {
         holder.title.setText(nameDetails.getName());
         holder.desc.setText(nameDetails.getDesc());
         Glide.with(holder.img.getContext()).load(nameDetails.getImg_url()).into(holder.img);
-        //btn to be added
+        holder.btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context,Menu.class);
+                i.putExtra("name",nameDetails.getName());
+                i.putExtra("cube",nameDetails.getStop());
+                i.putExtra("type",nameDetails.getType());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
     }
 
     static class NameHolder extends RecyclerView.ViewHolder {
@@ -121,9 +131,9 @@ class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameHolder> {
 
         NameHolder(View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.logo);
+            img = itemView.findViewById(R.id.type);
             title = itemView.findViewById(R.id.name);
-            desc = itemView.findViewById(R.id.desc);
+            desc = itemView.findViewById(R.id.price);
             btn = itemView.findViewById(R.id.button);
         }
     }

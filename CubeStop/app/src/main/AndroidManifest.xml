@@ -16,7 +16,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.CubeStop">
-        <activity android:name=".Description"></activity>
+        <activity android:name=".Details"></activity>
+        <activity android:name=".Menu" />
+        <activity android:name=".Description" />
         <activity android:name=".CubeStopDetails" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
