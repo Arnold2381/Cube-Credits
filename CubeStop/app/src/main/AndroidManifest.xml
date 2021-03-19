@@ -18,6 +18,7 @@
         android:theme="@style/Theme.CubeStop">
         <activity android:name=".Details"></activity>
         <activity android:name=".Menu" />
+        <activity android:name=".Profile" />
         <activity android:name=".Description" />
         <activity android:name=".CubeStopDetails" />
         <!--

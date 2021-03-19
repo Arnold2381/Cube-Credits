@@ -43,7 +43,6 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     SharedPreferences name;
-    SharedPreferences.Editor edit;
     private TextView title,addr,time,status,dis;
     private Button details,test;
     private int near = 0;
@@ -65,16 +64,8 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Intent i = getIntent();
-        String sp =  i.getStringExtra("name");
-        String usr = i.getStringExtra("user");
+
         name = getSharedPreferences("DETAILS",MODE_PRIVATE);
-        if(sp!=null && usr!=null) {
-            edit = name.edit();
-            edit.putString("user", usr);
-            edit.putString("name", sp);
-            edit.apply();
-        }
 
         title = findViewById(R.id.name);
         addr = findViewById(R.id.price);

@@ -1,5 +1,6 @@
 package com.example.cubestop;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,9 @@ public class Inner_hist_Adapter extends RecyclerView.Adapter<Inner_hist_Adapter.
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView1.setText(currentItem.getText1());
         holder.mTextView2.setText(currentItem.getText2());
+        if(currentItem.getText3().toCharArray()[0]=='-') {
+            holder.mTextView3.setTextColor(Color.RED);
+        }
         holder.mTextView3.setText(currentItem.getText3());
     }
     @Override

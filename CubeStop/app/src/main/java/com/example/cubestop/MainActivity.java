@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!name.getString("name","").equals("")){
             Toast.makeText(getApplicationContext(),"Welcome "+name.getString("name","")+"!",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(MainActivity.this,Maps.class);
+            Intent i = new Intent(MainActivity.this,Profile.class);
             this.finish();
             startActivity(i);
         }
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(usr) && dataSnapshot.child(usr).child("Password").getValue().toString().equals(pass)){
                                 Toast.makeText(getApplicationContext(),"Logged in successfully!",Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(MainActivity.this,Maps.class);
-                                i.putExtra("name",dataSnapshot.child(usr).child("Name").getValue().toString());
+                                Intent i = new Intent(MainActivity.this,Profile.class);
+                                i.putExtra("name",dataSnapshot.child(usr).child("Name").getValue(String.class));
                                 i.putExtra("user",usr);
                                 finish();
                                 startActivity(i);

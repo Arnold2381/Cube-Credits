@@ -1,6 +1,8 @@
 package com.example.cubestop;
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,21 +20,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 
 
@@ -46,6 +38,7 @@ public class History extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static String user1="";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private RecyclerView Outer_hist;
@@ -83,6 +76,8 @@ public class History extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sp = getActivity().getSharedPreferences("DETAILS", Context.MODE_PRIVATE);
+        user1 = sp.getString("user","");
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -119,25 +114,7 @@ public class History extends Fragment {
         return itemList;
     }
 
-    // Method to pass the arguments
-    // for the elements
-    // of child RecyclerView
-//    private List<Inner_hist_item> ChildItemList()
-//    {
-//
-//        List<Inner_hist_item> ChildItemList
-//                = new ArrayList<>();
-//
-//        ChildItemList.add(new Inner_hist_item(R.drawable.ic_grocery,"fff","fjnfjnf","fifnfk"));
-//        ChildItemList.add(new Inner_hist_item(R.drawable.ic_grocery,"fff","fjnfjnf","fifnfk"));
-//        ChildItemList.add(new Inner_hist_item(R.drawable.ic_grocery,"fff","fjnfjnf","fifnfk"));
-//        ChildItemList.add(new Inner_hist_item(R.drawable.ic_grocery,"fff","fjnfjnf","fifnfk"));
-//
-//        return ChildItemList;
-//    }
     private void ChildItemList()  {
-
-
         Iterator mapiterator=map.entrySet().iterator();
         while(mapiterator.hasNext())
         {
@@ -146,21 +123,25 @@ public class History extends Fragment {
             List<Inner_hist_item> childnew=new ArrayList<>();
             for (Months i:lnew)
             {
-
+                String msg = "";
+                String x = i.getCredits();
+                if(x.toCharArray()[0]=='-') {
+                    msg="Redeemed on "+i.getService()+" items worth Rs. "+i.getPrice();
+                }
+                else{
+                    msg="Bought "+i.getService()+" items more than Rs. "+i.getPrice();
+                }
                     if(i.getService().equalsIgnoreCase("Grocery"))
-                    childnew.add(new Inner_hist_item(R.drawable.ic_grocery,"Bought "+i.getService()+" items more than Rs "+String.valueOf(i.getPrice()),i.getShop()+"- "+i.getTimestamp(),i.getCredits()));
+                    childnew.add(new Inner_hist_item(R.drawable.ic_grocery,msg,i.getShop()+"- "+i.getTimestamp(),x));
                     else if(i.getService().equalsIgnoreCase("Food"))
-                childnew.add(new Inner_hist_item(R.drawable.ic_food,"Dined for more than more than Rs "+String.valueOf(i.getPrice()),i.getShop()+"- "+i.getTimestamp(),i.getCredits()));
+                childnew.add(new Inner_hist_item(R.drawable.ic_food,msg,i.getShop()+"- "+i.getTimestamp(),x));
                     else if(i.getService().equalsIgnoreCase("Eco Friendly"))
-                        childnew.add(new Inner_hist_item(R.drawable.ic_eco,"Eco friendly purchase",i.getShop()+"- "+i.getTimestamp(),i.getCredits()));
+                        childnew.add(new Inner_hist_item(R.drawable.ic_eco,"Eco friendly purchase",i.getShop()+"- "+i.getTimestamp(),x));
             }
             ChildItemList.add(childnew);
             month_name.add((String) mapElement.getKey());
 
         }
-        Log.d("jfjbfjbf",String.valueOf(ChildItemList));
-        Log.d("dkdkndkd",String.valueOf(month_name));
-
     }
     private void dataManager()
     {
@@ -168,19 +149,18 @@ public class History extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                DataSnapshot user = dataSnapshot.child("Users").child("Abhishek123").child("History");
+                map.clear();
+                ChildItemList.clear();
+                month_name.clear();
+                DataSnapshot user = dataSnapshot.child("Users").child(user1).child("History");
                 List <Months> arr = new ArrayList<Months>();
-                int i=0;
                 for(DataSnapshot ds: user.getChildren())
                 {
-                    Log.d("kkl",String.valueOf(ds.getKey()));
                     for (DataSnapshot ds1:ds.getChildren())
                     {
-                        Log.d("kkl",String.valueOf(ds1));
                         arr.add(new Months(ds.getKey(),ds1.getKey(),ds1.child("Credits").getValue(String.class),ds1.child("Price").getValue(Double.class),ds1.child("Shop").getValue(String.class),ds1.child("Timestamp").getValue(String.class)));
                     }
                 }
-                Log.d("hubuu",String.valueOf(arr.size()));
                 for(Months k:arr)
                 {
                     map.put(k.getMonth(),new LinkedList<Months>());
@@ -191,21 +171,14 @@ public class History extends Fragment {
                     map.get(k.getMonth()).add(k);
 
                 }
-
-                Log.e("dknkn",String.valueOf(map));
                 ChildItemList();
                 Outer_hist_Adapter parentAdapter= new Outer_hist_Adapter(ParentItemList());
                 Outer_hist.setAdapter(parentAdapter);
-
-
     }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
     }
-
 }
