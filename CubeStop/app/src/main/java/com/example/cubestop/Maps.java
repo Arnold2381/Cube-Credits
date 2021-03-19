@@ -11,6 +11,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
@@ -189,8 +191,10 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         NotificationChannel channel = new NotificationChannel("0","Cube", NotificationManager.IMPORTANCE_HIGH);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         manager.createNotificationChannel(channel);
+        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.cubestop);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channel.getId())
-            .setSmallIcon(R.drawable.logo)
+            .setSmallIcon(R.drawable.ic_notification_icon)
+            .setLargeIcon(image)
             .setContentTitle("Cube Stop Nearby")
             .setContentText("You are approaching Chinnar Cube Stop. Wanna stop by and take a break !!!")
             .setStyle(new NotificationCompat.BigTextStyle()
