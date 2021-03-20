@@ -1,0 +1,62 @@
+.card {
+  width: 97%;
+  height: 30%;
+
+  margin-top: 5%;
+  background: rgba(61, 179, 198, 0.3);
+}
+.img {
+  position: absolute;
+  margin-top: 1%;
+  left: 1%;
+}
+.text {
+  position: absolute;
+  margin-top: 1%;
+  left: 35%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+
+  color: #000000;
+}
+.text1 {
+  position: absolute;
+
+  margin-top: 4%;
+  left: 35%;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+
+  color: #484848;
+}
+.coin {
+  position: absolute;
+  left: 70%;
+  margin-top: 2%;
+}
+.notes {
+  position: absolute;
+  left: 80%;
+  margin-top: 1.5%;
+}
+.coincredit {
+  position: absolute;
+  left: 73%;
+  margin-top: 2%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #006838;
+}
+.moneycost {
+  position: absolute;
+  left: 85%;
+  margin-top: 2%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+}

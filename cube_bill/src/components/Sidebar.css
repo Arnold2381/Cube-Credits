@@ -1,0 +1,25 @@
+.back {
+  position: absolute;
+  width: 26%;
+  height: 100%;
+
+  background-image: url(../pics/side_back.svg);
+}
+.customer {
+  position: absolute;
+
+  left: -2%;
+  top: 40%;
+}
+.button {
+  background-color: transparent;
+  border: transparent;
+  width: 100%;
+  outline: transparent;
+}
+.logo {
+  position: absolute;
+
+  left: 5%;
+  top: 5%;
+}

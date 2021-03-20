@@ -1,0 +1,113 @@
+.balance {
+  position: absolute;
+  left: 28%;
+  top: 3%;
+}
+.balance1 {
+  position: absolute;
+  left: 75%;
+  top: 3%;
+}
+.credits {
+  position: absolute;
+  left: 60%;
+  top: 45%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+.line {
+  position: absolute;
+  width: 73%;
+  height: 0%;
+  left: 26%;
+  top: 20%;
+  border: 4px solid #1b5e20;
+}
+.cash {
+  position: absolute;
+  left: 28%;
+  top: 83%;
+}
+.earned {
+  position: absolute;
+
+  left: 35%;
+  top: 80%;
+}
+.purchase {
+  position: absolute;
+
+  left: 75%;
+  top: 80%;
+}
+.money {
+  position: absolute;
+  left: 55%;
+  top: 45%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.progress {
+  position: absolute;
+
+  height: 5%;
+  width: 60%;
+  left: 35%;
+  top: 25%;
+  background: rgba(8, 8, 8, 0.2);
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+.progress-done {
+  background: rgba(61, 179, 198, 0.6);
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 30px;
+  display: flex;
+
+  height: 100%;
+  width: 0%;
+  opacity: 0;
+  transition: 1s ease 0.3s;
+}
+.percentage {
+  position: absolute;
+  left: 10%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: -0.333333px;
+}
+.pocket {
+  position: absolute;
+
+  left: 27%;
+  top: 22%;
+}
+.cardcontainer {
+  position: absolute;
+  width: 70%;
+  height: 39%;
+  left: 28%;
+  top: 36%;
+  overflow-y: scroll;
+  background: white;
+}
